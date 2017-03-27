@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 resources:minivans do
-  resources :bookings, only[:create, :index]
+  resources :bookings, only: [:create, :index]
 end
   devise_for :users
   root to: 'pages#home'
