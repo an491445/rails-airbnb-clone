@@ -3,6 +3,7 @@ class MinivansController < ApplicationController
   end
 
   def show
+    @minivan = Minivan.find(params[:id])
   end
 
   def new
