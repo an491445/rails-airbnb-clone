@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327135059) do
+ActiveRecord::Schema.define(version: 20170327135522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "minivan_id"
+    t.integer  "user_id"
+    t.integer  "price"
+    t.string   "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["minivan_id"], name: "index_bookings_on_minivan_id", using: :btree
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+  end
 
   create_table "minivans", force: :cascade do |t|
     t.integer  "capacity"
@@ -54,5 +67,7 @@ ActiveRecord::Schema.define(version: 20170327135059) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bookings", "minivans"
+  add_foreign_key "bookings", "users"
   add_foreign_key "minivans", "users"
 end
