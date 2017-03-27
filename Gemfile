@@ -16,6 +16,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+gem 'faker', '~> 1.7', '>= 1.7.3'
+
 gem 'devise'
 
 group :development, :test do
