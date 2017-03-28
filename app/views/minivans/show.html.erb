@@ -1,2 +1,12 @@
-<h1>Minivans#show</h1>
-<p>Find me in app/views/minivans/show.html.erb</p>
+<!-- <h1>Minivans#show</h1>
+<p>Find me in app/views/minivans/show.html.erb</p> -->
+<h3>Here is your minivan little unicorn: </h3>
+
+<%= @minivan.capacity %>
+<%= @minivan.model_year %>
+<%= @minivan.gearbox %>
+<%= @minivan.price_per_day %>
+<%= @minivan.location %>
+<%= @minivan.description %>
+
+<img src="<%= @minivan.picture %>">
