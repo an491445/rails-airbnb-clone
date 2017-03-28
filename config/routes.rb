@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources:minivans do
-    resources :bookings, only: [:create, :index]
+
+  resources :users, only: [:index, :show] do
+    resources :minivans do
+      resources :bookings, only: [:create, :index]
+    end
   end
 
   devise_for :users,
