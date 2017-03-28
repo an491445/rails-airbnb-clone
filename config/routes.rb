@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
-
-  get 'users/show'
+  resources :minivans, only: [:show, :index]
 
   resources :users, only: [:index, :show] do
-    resources :minivans do
+    resources :minivans, only: [:new, :create, :update, :edit, :destroy] do
       resources :bookings, only: [:create, :index]
     end
   end
