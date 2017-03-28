@@ -1,6 +1,6 @@
 class MinivansController < ApplicationController
   before_action :set_user, only: [:new, :create]
-  before_action :set_minivan, only: [:show, :edit, :update]
+  before_action :set_minivan, only: [:show, :edit, :update, :destroy]
 
   def index
     @minivans = Minivan.all
@@ -34,6 +34,8 @@ class MinivansController < ApplicationController
   end
 
   def destroy
+    @minivan.destroy
+    redirect_to user_path(@user)
   end
 
 private
