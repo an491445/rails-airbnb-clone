@@ -19,6 +19,7 @@ gem 'autoprefixer-rails'
 gem 'faker', '~> 1.7', '>= 1.7.3'
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'binding_of_caller'
