@@ -9,6 +9,7 @@
     <% minivan_url = @minivan.picture || "http://placehold.it/30x30" %>
     <%= image_tag minivan_url, width: 450%>
     </div>
+
     <div class= "col-xs-12 col-md-6 ">
       <p><strong>Number of seats: </strong><%= @minivan.capacity %></p>
        <p><strong>Model year: </strong><%= @minivan.model_year %></p>
@@ -16,6 +17,7 @@
        <p><strong>Price/day: </strong><%= @minivan.price_per_day %></p>
       <p><strong>Location: </strong><%= @minivan.location %></p>
       <p><strong>Description: </strong><%= @minivan.description %></p>
+      <%= link_to "Delete", minivan_path(@minivan), method: :delete, data: { confirm: "Are you sure ?"} , class: "btn btn-danger"%>
       </div>
   </div>
 </div>
