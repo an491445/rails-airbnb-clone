@@ -1,12 +1,21 @@
 <!-- <h1>Minivans#show</h1>
 <p>Find me in app/views/minivans/show.html.erb</p> -->
-<h3>Here is your minivan little unicorn: </h3>
+<h3 class="text-center"> Here is your minivan little unicorn: </h3>
 
-<%= @minivan.capacity %>
-<%= @minivan.model_year %>
-<%= @minivan.gearbox %>
-<%= @minivan.price_per_day %>
-<%= @minivan.location %>
-<%= @minivan.description %>
 
-<img src="<%= @minivan.picture %>">
+<div class="container">
+  <div class="row">
+    <div class= "col-xs-12 col-md-6">
+    <% minivan_url = @minivan.picture || "http://placehold.it/30x30" %>
+    <%= image_tag minivan_url, width: 450%>
+    </div>
+    <div class= "col-xs-12 col-md-6 ">
+      <p><strong>Number of seats: </strong><%= @minivan.capacity %></p>
+       <p><strong>Model year: </strong><%= @minivan.model_year %></p>
+       <p> <strong>Type: </strong><%= @minivan.gearbox %></p>
+       <p><strong>Price/day: </strong><%= @minivan.price_per_day %></p>
+      <p><strong>Location: </strong><%= @minivan.location %></p>
+      <p><strong>Description: </strong><%= @minivan.description %></p>
+      </div>
+  </div>
+</div>
