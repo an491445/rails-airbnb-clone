@@ -1,11 +1,16 @@
-<% @minivans.each do |minivan| %>
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-  <div class="card-category"> minivan.location</div>
-  <div class="card-description">
-    <h2><%= minivan.price_per_day %>€/day</h2>
-    <p><%= minivan.description %></p>
+<div class="container">
+  <div class="row">
+    <% @minivans.each do |minivan| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path minivan.picture, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-category"><%= minivan.location %></div>
+          <div class="card-description">
+            <h2><%= minivan.price_per_day %>€/day</h2>
+            <p><%= minivan.description %></p>
+          </div>
+          <%= link_to "", minivan_path(minivan), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <img class="card-user avatar" src="user.jpg">
-  <a class="card-link" href="#" ></a>
 </div>
-<% end %>
