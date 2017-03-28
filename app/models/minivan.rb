@@ -2,6 +2,8 @@ class Minivan < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
 
+  mount_uploader :picture, PhotoUploader
+
   validates :capacity, presence: true
   validates :model_year, presence: true
   validates :gearbox, inclusion: { in: ["automatic", "manual"], allow_nil: false }

@@ -20,6 +20,8 @@ gem 'faker', '~> 1.7', '>= 1.7.3'
 
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 
 group :development, :test do
   gem 'binding_of_caller'
