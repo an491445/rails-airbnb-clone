@@ -1,2 +1,9 @@
-<h1>Minivans#index</h1>
-<p>Find me in app/views/minivans/index.html.erb</p>
+<!-- <h1>Minivans#index</h1>
+<p>Find me in app/views/minivans/index.html.erb</p> -->
+
+<% @minivans.each do |minivan| %>
+<% render 'shared/card' %>
+<% end %>
+
+
+
