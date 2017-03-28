@@ -13,6 +13,6 @@
 <% if @minivans.empty? %>
   <p><%= "#{@profile.first_name} doesn't have any minivans to rent." %></p>
 <% else %>
-  <% render 'shared/card' %>
+  <%= render 'shared/card' %>
 <% end %>
 <p><%= link_to "Add a minivan", new_user_minivan_path(@user) %></p>
