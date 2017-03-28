@@ -1,2 +1,16 @@
-<h1>Minivans#new</h1>
-<p>Find me in app/views/minivans/new.html.erb</p>
+<!-- <h1>Minivans#new</h1>
+<p>Find me in app/views/minivans/new.html.erb</p> -->
+<%= simple_form_for [@user, @minivan] do |m|%>
+
+  <%= m.input :capacity %>
+  <%= m.input :gearbox, collection: ["manual", "automatic"] %>
+  <%= m.input :model_year %>
+  <%= m.input :picture %>
+  <%= m.input :price_per_day %>
+  <%= m.input :location %>
+  <%= m.input :description %>
+  <%= m.submit "submit" %>
+<% end %>
+
+
+
