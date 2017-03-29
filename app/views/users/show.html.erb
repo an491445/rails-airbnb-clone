@@ -24,11 +24,11 @@
   </ul>
 <% end %>
 
-<h3>Minivans</h3>
+<h3>My minivans that I want to rent out</h3>
 <% if @minivans.empty? %>
   <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
 <% else %>
   <%= render 'shared/card' %>
 <% end %>
-<p><%= link_to "Add a minivan", new_user_minivan_path(@user) %></p>
+<p><%= link_to "Add a new minivan to rent", new_user_minivan_path(@user) %></p>
 
