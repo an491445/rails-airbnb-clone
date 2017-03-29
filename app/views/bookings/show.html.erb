@@ -1,0 +1,10 @@
+<h1>Booking</h1>
+<p>Id: <%= @booking.id %></p>
+<% minivan_url = @minivan.picture || "http://placehold.it/30x30" %>
+<%= image_tag minivan_url, width: 450%>
+<p><%= link_to "Minivan", minivan_path(@minivan) %></p>
+<p>Start time: <%= @booking.start_time %></p>
+<p>End time: <%= @booking.end_time %></p>
+<p>Total price: <%= @booking.price %>€</p>
+<p>Status: <%= @booking.status %></p>
+<p>Owner of the van: <%= "#{@owner.first_name} #{@owner.last_name}" if @owner %></p>

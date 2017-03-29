@@ -14,7 +14,8 @@ class MinivansController < ApplicationController
   end
 
   def show
-    #@minivan = Minivan.find(params[:id])
+    @same_user = current_user == @minivan.user
+    @booking = Booking.new
   end
 
   def new
@@ -32,11 +33,9 @@ class MinivansController < ApplicationController
   end
 
   def edit
-    #@minivan = Minivan.find(params[:id])
   end
 
   def update
-    #@minivan = Minivan.find(params[:id])
     @minivan.update(minivans_params)
   end
 
