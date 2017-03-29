@@ -7,4 +7,4 @@
 <p>End time: <%= @booking.end_time %></p>
 <p>Total price: <%= @booking.price %>€</p>
 <p>Status: <%= @booking.status %></p>
-<p>Owner of the van: <%= "#{@owner.first_name} #{@owner.last_name}" if @owner %></p>
+<p>Owner of the van: <%= "#{@owner.profile.first_name} #{@owner.profile.last_name}" if @owner %></p>
