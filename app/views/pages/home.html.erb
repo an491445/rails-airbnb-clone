@@ -1,5 +1,15 @@
 <!-- <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p> -->
-<p>Hello unicorns' minivans</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path @banner_photo, height: 600, width: 800, gravity: :center, crop: :fill %>')">
+  <div class="banner-content">
+    <h1>Unicorn Minivans</h1>
+    <p>Very cool stuff, useful and smart</p>
+    <a class="btn btn-primary btn-lg">TODO: search</a>
+  </div>
+</div>
 
 <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+<h2>Minivans</h2>
+<%= render 'shared/card' %>
+<%= link_to "Browse all minivans", minivans_path %>
