@@ -4,6 +4,13 @@ class MinivansController < ApplicationController
 
   def index
     @minivans = Minivan.all
+  @minivans = Minivan.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@minivans) do |minivan, marker|
+      marker.lat minivan.latitude
+      marker.lng minivan.longitude
+      # marker.infowindow render_to_string(partial: "/minivans/map_box", locals: { flat: flat })
+    end
   end
 
   def show
