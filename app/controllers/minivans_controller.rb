@@ -1,5 +1,5 @@
 class MinivansController < ApplicationController
-  before_action :set_user, only: [:new, :create]
+  before_action :set_user, only: [:new, :create, :destroy]
   before_action :set_minivan, only: [:show, :edit, :update, :destroy]
 
   def index

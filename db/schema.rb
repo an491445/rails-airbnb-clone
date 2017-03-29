@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328083054) do
+ActiveRecord::Schema.define(version: 20170329095739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,10 +35,15 @@ ActiveRecord::Schema.define(version: 20170328083054) do
     t.string   "picture"
     t.integer  "user_id"
     t.integer  "price_per_day"
-    t.string   "location"
     t.text     "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
+    t.string   "city"
+    t.string   "country"
+    t.string   "zipcode"
     t.index ["user_id"], name: "index_minivans_on_user_id", using: :btree
   end
 
