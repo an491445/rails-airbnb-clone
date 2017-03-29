@@ -9,9 +9,24 @@
     <%= " does not have a driver license." %>
   <% end %>
 </p>
+
+<h3>My bookings</h3>
+<% if @bookings.empty? %>
+  <p><%= @profile.first_name %> doesn't have any bookings.</p>
+<% else %>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li>
+        Booking id: <%= booking.id %>
+        <%= link_to "See booking details", booking_path(booking) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h3>Minivans</h3>
 <% if @minivans.empty? %>
-  <p><%= "#{@profile.first_name} doesn't have any minivans to rent." %></p>
+  <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
 <% else %>
   <%= render 'shared/card' %>
 <% end %>

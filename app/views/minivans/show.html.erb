@@ -1,6 +1,6 @@
 <!-- <h1>Minivans#show</h1>
 <p>Find me in app/views/minivans/show.html.erb</p> -->
-<h3 class="text-center"> Here is your minivan little unicorn: </h3>
+<h1 class="text-center"> Here is your minivan little unicorn: </h1>
 
 <div class="vans">
 <div class="container">
@@ -18,9 +18,17 @@
        <p><strong>Price/day: </strong><%= @minivan.price_per_day %></p>
       <p><strong>Address: </strong><%= @minivan.address %></p>
       <p><strong>Description: </strong><%= @minivan.description %></p>
-      <%= link_to "Delete", user_minivan_path(@minivan), method: :delete, data: { confirm: "Are you sure ?"} , class: "btn btn-danger"%>
+
+      <% if @same_user %>
+        <%= link_to "Delete", user_minivan_path(@minivan), method: :delete, data: { confirm: "Are you sure ?"} , class: "btn btn-danger"%>
+      <% end %>
       </div>
     </div>
   </div>
+
+  <% unless @same_user %>
+    <h3>Book this minivan:</h3>
+    <%= render 'book_minivan' %>
+  <% end %>
 </div>
 </div>
