@@ -20,11 +20,20 @@ class MinivansController < ApplicationController
 
   def new
     @minivan = Minivan.new
+    @arrival = Arrival.new
+    @departure = Departure.new
   end
 
   def create
     @minivan = Minivan.new(minivans_params)
-    @minivan.user= @user
+    #@departure = Departure.new(departure_params)
+    #@arrival = Arrival.new(arrival_params)
+
+    #raise
+    #@minivan.departure = @departure
+    #@minivan.arrival = @arrival
+
+    @minivan.user = @user
     if @minivan.save
       redirect_to user_path(@user)
     else
@@ -55,7 +64,15 @@ private
 
   def minivans_params
     params.require(:minivan).permit(:available_seats, :gearbox, :model_year,
-      :picture, :price, :tagline, :description, :departure_city, :arrival_city,
-      :departure_date, :arrival_date)
+      :picture, :price, :tagline, :description, :departure_date, :arrival_date)
   end
+
+  def arrival_params
+    params.require(:minivan).permit(:arrivals)
+  end
+
+  def departure_params
+    params.require(:minivan).permit(:departures)
+  end
+
 end
