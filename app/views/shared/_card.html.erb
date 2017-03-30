@@ -21,7 +21,7 @@
           <% end %>
           <%= image_tag minivan_url, class:"avatar" %>
           </div>
-          <%= link_to "", minivan_path(minivan), class: "card-link" %>
+          <%= link_to "", user_minivan_path(minivan.user, minivan), class: "card-link" %>
         </div>
       </div>
     <% end %>

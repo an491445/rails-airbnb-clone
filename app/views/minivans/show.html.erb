@@ -26,7 +26,7 @@
 
 
       <% if @same_user %>
-        <%= link_to "Delete", user_minivan_path(@minivan), method: :delete, data: { confirm: "Are you sure ?"} , class: "btn btn-danger"%>
+        <%= link_to "Delete", user_minivan_path(@minivan.user, @minivan), method: :delete, data: { confirm: "Are you sure ?"} , class: "btn btn-danger"%>
       <% end %>
       </div>
     </div>
