@@ -8,12 +8,17 @@
         <% photo = "" %>
       <% end %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= photo %>')">
-          <div class="card-category"><%= minivan.departure.location + "to" + minivan.arrival.location if minivan.departure && minivan.arrival %></div>
+          <div class="card-category"><%= minivan.departure.location + " to " + minivan.arrival.location if minivan.departure && minivan.arrival %></div>
           <div class="card-description">
-            <h2><%= minivan.price %>€</h2>
+            <h4><%= minivan.price %>€</h4>
             <p><%= minivan.tagline %></p>
           </div>
-          <div><% minivan_url = minivan.user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <div class= "card-user">
+          <% if minivan.user && minivan.user.profile.facebook_picture_url %>
+            <% minivan_url = minivan.user.profile.facebook_picture_url %>
+          <% else %>
+            <% minivan_url = "http://placehold.it/30x30" %>
+          <% end %>
           <%= image_tag minivan_url, class:"avatar" %>
           </div>
           <%= link_to "", minivan_path(minivan), class: "card-link" %>
