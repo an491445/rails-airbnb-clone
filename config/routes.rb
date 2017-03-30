@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :minivans, only: [:new, :create, :update, :edit, :destroy]
   end
 
+  resource :profile, only: [:edit, :update, :show]
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 

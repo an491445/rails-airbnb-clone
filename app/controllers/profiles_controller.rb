@@ -1,24 +1,20 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-
-  def index
-  end
+class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    @profile = @user.profile
+    @user = current_user
     @minivans = @user.minivans
     @bookings = @user.bookings
   end
 
   def edit
-    @profile = @user.profile
   end
 
   def update
-    @profile = @user.profile
     @profile.update(profile_params)
+
     if @profile.save
-      redirect_to user_path(@user)
+      redirect_to profile_path
     else
       render :new
     end
@@ -26,8 +22,8 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = current_user
+  def set_profile
+    @profile = current_user.profile
   end
 
   def profile_params
