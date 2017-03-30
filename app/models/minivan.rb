@@ -14,6 +14,8 @@ class Minivan < ApplicationRecord
   # validates :zipcode, presence: true
   # validates :country, presence: true
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  geocoded_by :departure_city
+  geocoded_by :arrival_city
+  after_validation :geocode, if: :departure_city_changed?
+  after_validation :geocode, if: :arrival_city_changed?
 end

@@ -6,14 +6,17 @@
   <div class= "col-xs-12 col-sm-6 col-sm-offset-3">
     <%= simple_form_for [@user, @minivan] do |m|%>
 
-      <%= m.input :capacity %>
+      <%= m.input :available_seats %>
       <%= m.input :gearbox, collection: ["manual", "automatic"] %>
       <%= m.input :model_year %>
       <%= m.input :picture %>
-    <!--  f.input :picture, placeholder: "Van" %> -->
-      <%= m.input :price_per_day %>
-      <%= m.input :address %>
+      <%= m.input :price %>
+      <%= m.input :tagline %>
       <%= m.input :description %>
+      <%= m.input :departure_city %>
+      <%= m.input :arrival_city %>
+      <%= m.input :departure_date %>
+      <%= m.input :arrival_date %>
       <%= m.submit "submit", class: "btn btn-warning"%>
     <% end %>
     </div>

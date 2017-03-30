@@ -8,10 +8,10 @@
         <% photo = "" %>
       <% end %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= photo %>')">
-          <div class="card-category"><%= minivan.address %></div>
+          <div class="card-category"><%= minivan.departure_city %></div>
           <div class="card-description">
-            <h2><%= minivan.price_per_day %>€/day</h2>
-            <p><%= minivan.description %></p>
+            <h2><%= minivan.price %>€</h2>
+            <p><%= minivan.tagline %></p>
           </div>
           <%= link_to "", minivan_path(minivan), class: "card-link" %>
         </div>

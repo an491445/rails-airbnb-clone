@@ -54,6 +54,8 @@ private
   end
 
   def minivans_params
-    params.require(:minivan).permit(:capacity, :model_year, :gearbox, :price_per_day, :address, :description, :picture, :photo_cache)
+    params.require(:minivan).permit(:available_seats, :gearbox, :model_year,
+      :picture, :price, :tagline, :description, :departure_city, :arrival_city,
+      :departure_date, :arrival_date)
   end
 end
