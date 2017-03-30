@@ -10,40 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329095739) do
+ActiveRecord::Schema.define(version: 20170330092644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.integer  "minivan_id"
     t.integer  "user_id"
-    t.integer  "price"
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "message"
     t.index ["minivan_id"], name: "index_bookings_on_minivan_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
 
   create_table "minivans", force: :cascade do |t|
-    t.integer  "capacity"
     t.integer  "model_year"
     t.string   "gearbox"
     t.string   "picture"
     t.integer  "user_id"
-    t.integer  "price_per_day"
     t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "address"
-    t.string   "city"
-    t.string   "country"
-    t.string   "zipcode"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "departure_city"
+    t.string   "arrival_city"
+    t.float    "departure_longitude"
+    t.float    "arrival_longitude"
+    t.float    "departure_latitude"
+    t.float    "arrival_latitude"
+    t.integer  "available_seats"
+    t.datetime "departure_date"
+    t.datetime "arrival_date"
+    t.integer  "price"
+    t.text     "tagline"
     t.index ["user_id"], name: "index_minivans_on_user_id", using: :btree
   end
 
@@ -53,6 +54,8 @@ ActiveRecord::Schema.define(version: 20170329095739) do
     t.boolean "driver_license"
     t.integer "user_id"
     t.string  "facebook_picture_url"
+    t.string  "title"
+    t.text    "biography"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
