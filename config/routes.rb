@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :minivans, only: [:show, :index] do
-    resources :bookings, only: [:create, :index]
+    resources :bookings, only: [:create, :show, :edit, :update, :destroy]
   end
 
   resources :bookings, only: [:show]

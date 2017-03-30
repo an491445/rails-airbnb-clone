@@ -1,10 +1,13 @@
 <h1>Booking</h1>
 <p>Id: <%= @booking.id %></p>
-<% minivan_url = @minivan.picture || "http://placehold.it/30x30" %>
-<%= image_tag minivan_url, width: 450%>
-<p><%= link_to "Minivan", minivan_path(@minivan) %></p>
-<p>Start time: <%= @booking.start_time %></p>
-<p>End time: <%= @booking.end_time %></p>
-<p>Total price: <%= @booking.price %>€</p>
+<%= render 'shared/card' %>
+<p>Route: <%= @minivan.departure.location if @minivan.departure %> - <%= @minivan.arrival.location if @minivan.arrival %></p>
+<p>Time: <%= @minivan.departure_date %> - <%= @minivan.arrival_date %></p>
+<p>Price: <%= @minivan.price %>€</p>
 <p>Status: <%= @booking.status %></p>
-<p>Owner of the van: <%= "#{@owner.profile.first_name} #{@owner.profile.last_name}" if @owner %></p>
+<p>Owner of the van: <%= link_to "#{@owner.profile.first_name} #{@owner.profile.last_name}", user_path(@driver) if @driver %></p>
+<p>Message: <%= @booking.message %></p>
+<% if @traveller == current_user %>
+  <%= link_to "Delete", minivan_booking_path(@booking), method: :delete, data: { confirm: "Are you sure that you want to delete the booking?"}, class: "btn btn-danger"%>
+  <%= link_to "Modify booking", edit_minivan_booking_path(@booking) %>
+<% end %>
