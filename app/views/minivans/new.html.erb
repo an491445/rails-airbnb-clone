@@ -3,22 +3,9 @@
 
 <div class="container">
   <div class="row">
-  <div class= "col-xs-12 col-sm-6 col-sm-offset-3">
-    <%= simple_form_for [@user, @minivan] do |m|%>
-
-      <%= m.input :available_seats %>
-      <%= m.input :gearbox, collection: ["manual", "automatic"] %>
-      <%= m.input :model_year %>
-      <%= m.input :picture %>
-      <%= m.input :price %>
-      <%= m.input :tagline %>
-      <%= m.input :departure %>
-      <%= m.input :arrival %>
-      <%= m.input :description %>
-      <%= m.input :departure_date %>
-      <%= m.input :arrival_date %>
-      <%= m.submit "submit", class: "btn btn-warning"%>
-    <% end %>
+    <div class= "col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1>Add a new minivan trip</h1>
+      <%= render 'minivan_form' %>
     </div>
   </div>
 </div>

@@ -1,0 +1,14 @@
+<%= simple_form_for [@user, @minivan] do |m|%>
+  <%= m.input :available_seats %>
+  <%= m.input :gearbox, collection: ["manual", "automatic"] %>
+  <%= m.input :model_year %>
+  <%= m.input :picture %>
+  <%= m.input :price %>
+  <%= m.input :tagline %>
+  <%= m.input :departure, input_html: { value: @minivan.departure ? @minivan.departure.location : "" } %>
+  <%= m.input :arrival, input_html: { value: @minivan.arrival ? @minivan.arrival.location : "" } %>
+  <%= m.input :description %>
+  <%= m.input :departure_date %>
+  <%= m.input :arrival_date %>
+  <%= m.submit "submit", class: "btn btn-warning"%>
+<% end %>

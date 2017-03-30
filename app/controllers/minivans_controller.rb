@@ -1,5 +1,5 @@
 class MinivansController < ApplicationController
-  before_action :set_user, only: [:new, :create, :destroy]
+  before_action :set_user, only: [:new, :create, :destroy, :show, :edit, :update]
   before_action :set_minivan, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -26,8 +26,8 @@ class MinivansController < ApplicationController
 
   def create
     @minivan = Minivan.new(minivans_params)
-    @departure = Departure.create(location: departure_params[:departure])
-    @arrival = Arrival.create(location: arrival_params[:arrival])
+    @departure = Departure.create(departure_params)
+    @arrival = Arrival.create(arrival_params)
 
     @minivan.departure = @departure
     @minivan.arrival = @arrival
@@ -45,11 +45,21 @@ class MinivansController < ApplicationController
 
   def update
     @minivan.update(minivans_params)
+
+    @minivan.departure || @minivan.departure = Departure.create(departure_params)
+    @minivan.arrival || @minivan.arrival = Arrival.create(arrival_params)
+
+    @minivan.departure.update(departure_params)
+    @minivan.arrival.update(arrival_params)
+
+    redirect_to user_minivan_path(@user, @minivan)
   end
 
   def destroy
-    @minivan.destroy
-    redirect_to user_path(@user)
+    if @minivan.user == current_user
+      @minivan.destroy
+      redirect_to user_path(@user)
+    end
   end
 
 private
@@ -67,11 +77,11 @@ private
   end
 
   def arrival_params
-    params.require(:minivan).permit(:arrival)
+    { location: params.require(:minivan).permit(:arrival)[:arrival] }
   end
 
   def departure_params
-    params.require(:minivan).permit(:departure)
+    { location: params.require(:minivan).permit(:departure)[:departure] }
   end
 
 end
