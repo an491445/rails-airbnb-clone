@@ -4,9 +4,6 @@ class BookingsController < ApplicationController
     @minivan = Minivan.find(params[:minivan_id])
     @user = current_user
 
-    price = @minivan.price
-
-    @booking.price = price
     @booking.minivan = @minivan
     @booking.user = @user
     @booking.status = "Not confirmed"
