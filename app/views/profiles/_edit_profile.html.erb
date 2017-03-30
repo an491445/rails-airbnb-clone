@@ -1,0 +1,8 @@
+<%= simple_form_for [@profile] do |m|%>
+  <%= m.input :first_name %>
+  <%= m.input :last_name %>
+  <%= m.input :driver_license %>
+  <%= m.input :title %>
+  <%= m.input :biography %>
+  <%= m.submit "submit", class: "btn btn-warning"%>
+<% end %>
