@@ -12,12 +12,18 @@
 
     <div class= "col-xs-12 col-md-6 ">
       <div class= "description">
-        <p><strong>Number of seats: </strong><%= @minivan.capacity %></p>
+        <p><strong>Title: </strong><%= @minivan.tagline %></p>
+        <p><strong>Description: </strong><%= @minivan.description %></p>
         <p><strong>Model year: </strong><%= @minivan.model_year %></p>
-       <p> <strong>Type: </strong><%= @minivan.gearbox %></p>
-       <p><strong>Price/day: </strong><%= @minivan.price_per_day %></p>
-      <p><strong>Address: </strong><%= @minivan.address %></p>
-      <p><strong>Description: </strong><%= @minivan.description %></p>
+        <p> <strong>Type: </strong><%= @minivan.gearbox %></p>
+        <p><strong>Capacity:</strong><%= @minivan.capacity %></p>
+        <p><strong>Number of seats available:</strong><%= @minivan.available_seats %></p>
+        <p><strong>Price: </strong><%= @minivan.price %></p>
+        <p><strong>Departure city: </strong><%= @minivan.departure_city %></p>
+        <p><strong>Arrival city: </strong><%= @minivan.arrival_city %></p>
+        <p><strong>Departure date: </strong><%= @minivan.departure_date %></p>
+        <p><strong>Arrival date: </strong><%= @minivan.arrival_date %></p>
+
 
       <% if @same_user %>
         <%= link_to "Delete", user_minivan_path(@minivan), method: :delete, data: { confirm: "Are you sure ?"} , class: "btn btn-danger"%>
