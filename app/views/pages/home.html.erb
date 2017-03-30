@@ -10,4 +10,15 @@
 
 <h2 class="text-center"> Minivans</h2>
 <%= render 'shared/card' %>
-<%= link_to "Browse all minivans", minivans_path %>
+<p class ="text-center"><%= link_to "Browse all minivans", minivans_path, class: "btn btn-warning block-center" %></p>
+
+ <div class="text-center padded" id="newsletter">
+      <h2>Get news from us</h2>
+      <p>Leave us your mail and get news from us</p>
+      <form class="form-inline">
+        <input type="email" placeholder="bob@gmail.com" class="form-control">
+        <input type="submit" value="Subscribe" class="btn btn-warning btn-bordered btn-bordered-warning">
+      </form>
+    </div>
+
+

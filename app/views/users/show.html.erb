@@ -1,11 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class= "col-xs-12 col-md-6">
       <h2><%= @profile.first_name %> <%= @profile.last_name %></h2>
         <% image_url = current_user.profile.facebook_picture_url || "http://placehold.it/30x30" %>
         <%= image_tag image_url, width: 50 %>
       <h3>Driver license</h3>
       <p><%= @profile.first_name %>
+      <p><%= @profile.title %></p>
+      <p><%= @profile.biography %>
+      </p>
         <% if @profile.driver_license %>
         <%= " has a driver license." %>
         <% else %>
@@ -13,23 +15,6 @@
         <% end %>
       </p>
     </div>
-    <div class= "col-xs-12 col-md-6 ">
-      <h3>My bookings</h3>
-        <% if @bookings.empty? %>
-        <p><%= @profile.first_name %> doesn't have any bookings.</p>
-        <% else %>
-        <ul>
-          <% @bookings.each do |booking| %>
-          <li> Booking id:
-          <%= booking.id %>
-          <%= link_to "See booking details", booking_path(booking) %>
-          </li>
-          <% end %>
-        </ul>
-        <% end %>
-      </div>
-    </div>
-
   <div class="row">
     <div class="col-xs-12">
       <h3>My own minivans</h3>
@@ -38,9 +23,6 @@
         <% else %>
         <%= render 'shared/card' %>
         <% end %>
-      <div>
-      <p><%= link_to "Add a minivan", new_user_minivan_path(@user), class: "btn btn-warning" %></p>
-      </div>
     </div>
   </div>
 </div>
