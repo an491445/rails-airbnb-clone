@@ -1,34 +1,48 @@
-<h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
-<% image_url = current_user.profile.facebook_picture_url || "http://placehold.it/30x30" %>
-<%= image_tag image_url, width: 50 %>
-<h2>Driver license</h2>
-<p><%= @profile.first_name %>
-  <% if @profile.driver_license %>
-    <%= " has a driver license." %>
-  <% else %>
-    <%= " does not have a driver license." %>
-  <% end %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class= "col-xs-12 col-md-6">
+      <h2><%= @profile.first_name %> <%= @profile.last_name %></h2>
+        <% image_url = current_user.profile.facebook_picture_url || "http://placehold.it/30x30" %>
+        <%= image_tag image_url, width: 50 %>
+      <h3>Driver license</h3>
+      <p><%= @profile.first_name %>
+        <% if @profile.driver_license %>
+        <%= " has a driver license." %>
+        <% else %>
+        <%= " does not have a driver license." %>
+        <% end %>
+      </p>
+    </div>
+    <div class= "col-xs-12 col-md-6 ">
+      <h3>My bookings</h3>
+        <% if @bookings.empty? %>
+        <p><%= @profile.first_name %> doesn't have any bookings.</p>
+        <% else %>
+        <ul>
+          <% @bookings.each do |booking| %>
+          <li> Booking id:
+          <%= booking.id %>
+          <%= link_to "See booking details", booking_path(booking) %>
+          </li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+    </div>
 
-<h3>My bookings</h3>
-<% if @bookings.empty? %>
-  <p><%= @profile.first_name %> doesn't have any bookings.</p>
-<% else %>
-  <ul>
-    <% @bookings.each do |booking| %>
-      <li>
-        Booking id: <%= booking.id %>
-        <%= link_to "See booking details", booking_path(booking) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<h3>Minivans</h3>
-<% if @minivans.empty? %>
-  <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
-<% else %>
-  <%= render 'shared/card' %>
-<% end %>
-<p><%= link_to "Add a minivan", new_user_minivan_path(@user) %></p>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>My own minivans</h3>
+        <% if @minivans.empty? %>
+        <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
+        <% else %>
+        <%= render 'shared/card' %>
+        <% end %>
+      <div>
+      <p><%= link_to "Add a minivan", new_user_minivan_path(@user), class: "btn btn-warning" %></p>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
 

@@ -1,16 +1,23 @@
 <!-- <h1>Minivans#new</h1>
 <p>Find me in app/views/minivans/new.html.erb</p> -->
-<%= simple_form_for [@user, @minivan] do |m|%>
 
-  <%= m.input :capacity %>
-  <%= m.input :gearbox, collection: ["manual", "automatic"] %>
-  <%= m.input :model_year %>
-  <%= m.input :picture %>
-  <%= m.input :price_per_day %>
-  <%= m.input :address %>
-  <%= m.input :description %>
-  <%= m.submit "submit" %>
-<% end %>
+<div class="container">
+  <div class="row">
+  <div class= "col-xs-12 col-sm-6 col-sm-offset-3">
+    <%= simple_form_for [@user, @minivan] do |m|%>
 
+      <%= m.input :capacity %>
+      <%= m.input :gearbox, collection: ["manual", "automatic"] %>
+      <%= m.input :model_year %>
+      <%= m.input :picture %>
+    <!--  f.input :picture, placeholder: "Van" %> -->
+      <%= m.input :price_per_day %>
+      <%= m.input :address %>
+      <%= m.input :description %>
+      <%= m.submit "submit", class: "btn btn-warning"%>
+    <% end %>
+    </div>
+  </div>
+</div>
 
 
