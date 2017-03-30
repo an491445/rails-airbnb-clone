@@ -4,7 +4,7 @@ class MinivansController < ApplicationController
 
   def index
     @minivans = Minivan.all
-  @minivans = Minivan.where.not(latitude: nil, longitude: nil)
+    @minivans = Minivan.where.not(latitude: nil, longitude: nil)
 
     @hash = Gmaps4rails.build_markers(@minivans) do |minivan, marker|
       marker.lat minivan.latitude
@@ -26,12 +26,11 @@ class MinivansController < ApplicationController
 
   def create
     @minivan = Minivan.new(minivans_params)
-    #@departure = Departure.new(departure_params)
-    #@arrival = Arrival.new(arrival_params)
+    @departure = Departure.create(location: departure_params[:departure])
+    @arrival = Arrival.create(location: arrival_params[:arrival])
 
-    #raise
-    #@minivan.departure = @departure
-    #@minivan.arrival = @arrival
+    @minivan.departure = @departure
+    @minivan.arrival = @arrival
 
     @minivan.user = @user
     if @minivan.save
@@ -68,11 +67,11 @@ private
   end
 
   def arrival_params
-    params.require(:minivan).permit(:arrivals)
+    params.require(:minivan).permit(:arrival)
   end
 
   def departure_params
-    params.require(:minivan).permit(:departures)
+    params.require(:minivan).permit(:departure)
   end
 
 end
