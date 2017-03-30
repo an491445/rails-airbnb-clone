@@ -19,8 +19,8 @@
         <p><strong>Capacity:</strong><%= @minivan.capacity %></p>
         <p><strong>Number of seats available:</strong><%= @minivan.available_seats %></p>
         <p><strong>Price: </strong><%= @minivan.price %></p>
-        <p><strong>Departure city: </strong><%= @minivan.departure_city %></p>
-        <p><strong>Arrival city: </strong><%= @minivan.arrival_city %></p>
+        <p><strong>Departure city: </strong><%= @minivan.departure.location if @minivan.departure %></p>
+        <p><strong>Arrival city: </strong><%= @minivan.arrival.location if @minivan.arrival %></p>
         <p><strong>Departure date: </strong><%= @minivan.departure_date %></p>
         <p><strong>Arrival date: </strong><%= @minivan.arrival_date %></p>
 
