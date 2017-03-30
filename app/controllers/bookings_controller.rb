@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     @minivan = Minivan.find(params[:minivan_id])
     @user = current_user
 
-    price = @minivan.price_per_day * (@booking.end_time - @booking.start_time).to_i / 1.day
+    price = @minivan.price
 
     @booking.price = price
     @booking.minivan = @minivan
@@ -32,6 +32,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_time, :end_time)
+    params.require(:booking).permit(:message)
   end
 end
