@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     @minivans = @user.minivans
     @bookings = @user.bookings
+    @bookings_other = Booking.where(user_id: current_user.id)
   end
 
   def edit

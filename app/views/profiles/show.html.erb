@@ -1,34 +1,50 @@
 <div class="container">
   <div class="row">
     <div class= "col-xs-12 col-md-6">
-      <h2><%= @profile.first_name %> <%= @profile.last_name %></h2>
+      <div class="text-center">
+        <h1><%= @profile.first_name %> <%= @profile.last_name %></h1>
         <% image_url = @profile.facebook_picture_url || "http://placehold.it/30x30" %>
         <%= image_tag image_url, width: 50 %>
-      <p><%= @profile.title %></p>
-      <h3>Biography</h3>
+        <p><%= @profile.title %></p>
+      </div>
+      <h2>Biography</h2>
       <p><%= @profile.biography %>
       </p>
-      <h3>Driver license</h3>
-      <p><%= @profile.first_name %>
+      <h2>Driver license</h2>
+      <p>
         <% if @profile.driver_license %>
-        <%= " has a driver license." %>
+          <%= "You have a driver license." %>
         <% else %>
-        <%= " does not have a driver license." %>
+          <%= "You do not have a driver license." %>
         <% end %>
       </p>
+      <%= link_to "Edit your profile", edit_profile_path %>
 
     </div>
     <div class= "col-xs-12 col-md-6 ">
-      <h3>My bookings</h3>
-        <% if @bookings.empty? %>
-        <p><%= @profile.first_name %> doesn't have any bookings.</p>
-        <% else %>
+      <h2>My bookings</h2>
+      <% if @bookings.empty? %>
+        <p>You do not have any bookings.</p>
+      <% else %>
         <ul>
           <% @bookings.each do |booking| %>
-          <li> Booking id:
-          <%= booking.id %>
-          <%= link_to "See booking details", booking_path(booking) %>
-          </li>
+            <li> Booking id:
+              <%= booking.id %>
+              <%= link_to "See booking details", booking_path(booking) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+      <h2>People who have signed up for your trips</h2>
+      <% if @bookings_other.empty? %>
+        <p>No body has signed up for your trips yet.</p>
+      <% else %>
+        <ul>
+          <% @bookings_other.each do |booking| %>
+            <li> Booking id:
+              <%= booking.id %>
+              <%= link_to "See booking details", booking_path(booking) %>
+            </li>
           <% end %>
         </ul>
         <% end %>
@@ -37,7 +53,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h3>My own minivans</h3>
+      <h2>My own minivans</h2>
         <% if @minivans.empty? %>
         <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
         <% else %>
