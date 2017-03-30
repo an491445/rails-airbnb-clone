@@ -27,21 +27,6 @@
           <% end %>
         </ul>
         <% end %>
-      </div>
-    </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>My own minivans</h3>
-        <% if @minivans.empty? %>
-        <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
-        <% else %>
-        <%= render 'shared/card' %>
-        <% end %>
-      <div>
-      <p><%= link_to "Add a minivan", new_user_minivan_path(@user), class: "btn btn-warning" %></p>
-      </div>
     </div>
   </div>
 </div>
-
