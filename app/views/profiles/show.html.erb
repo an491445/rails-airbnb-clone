@@ -1,31 +1,34 @@
+
 <div class="container">
   <div class="row">
-    <div class= "col-xs-12 col-md-6">
-      <div class="text-center">
+    <div class= "col-xs-12">
+      <div class="text-center", style="padding-top: 20px;">
         <% image_url = @profile.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag image_url, width: 80 %>
+          <%= image_tag image_url, width: 80, class:"avatar-large" %>
         <p><%= @profile.first_name %> <%= @profile.last_name %></p>
         <p><%= @profile.title %></p>
       </div>
-      <h2>Biography</h2>
-      <p><%= @profile.biography %>
-      </p>
-      <h2>Driver license</h2>
-      <p>
-        <% if @profile.driver_license %>
-          <%= "You have a driver license." %>
-        <% else %>
-          <%= "You do not have a driver license." %>
-        <% end %>
-      </p>
-      <%= link_to "Edit your profile", edit_profile_path %>
-
     </div>
-    <div class= "col-xs-12 col-md-6 ">
-      <h2>My bookings</h2>
-      <% if @bookings.empty? %>
-        <p>You do not have any bookings.</p>
-      <% else %>
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Biography</h2>
+        <p><%= @profile.biography %>
+        </p>
+        <h2>Driver license</h2>
+        <p>
+          <% if @profile.driver_license %>
+          <%= "You have a driver license." %>
+          <% else %>
+          <%= "You do not have a driver license." %>
+          <% end %>
+        </p>
+        <%= link_to "Edit your profile", edit_profile_path %>
+      </div>
+      <div class= "col-xs-6 ">
+        <h2>My bookings</h2>
+          <% if @bookings.empty? %>
+          <p>You do not have any bookings.</p>
+          <% else %>
         <ul>
           <% @bookings.each do |booking| %>
             <li> Booking id:
@@ -36,9 +39,9 @@
         </ul>
       <% end %>
       <h2>People who have signed up for your trips</h2>
-      <% if @bookings_other.empty? %>
+        <% if @bookings_other.empty? %>
         <p>No body has signed up for your trips yet.</p>
-      <% else %>
+        <% else %>
         <ul>
           <% @bookings_other.each do |booking| %>
             <li> Booking id:
@@ -53,7 +56,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <h2>My own minivans</h2>
+      <h2 class="text-center">My own minivans</h2>
         <% if @minivans.empty? %>
         <p><%= @profile.first_name %> doesn't have any minivans to rent.</p>
         <% else %>
@@ -61,7 +64,7 @@
         <% end %>
       <div>
       <div class="text-center">
-      <p><%= link_to "Add a minivan", new_user_minivan_path(@user), class: "btn btn-warning block-center" %></p>
+      <p style="padding-bottom: 20px;"> <%= link_to "Add a minivan", new_user_minivan_path(@user), class: "btn btn-warning block-center"%></p>
       </div>
       </div>
     </div>
