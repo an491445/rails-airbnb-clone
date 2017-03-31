@@ -16,5 +16,17 @@ class Minivan < ApplicationRecord
   # validates :zipcode, presence: true
   # validates :country, presence: true
 
+  def self.return_departures_with_coordinates
+    all.map(&:departure).select{|departure| departure.latitude && departure.longitude }
+  end
 
 end
+
+# same as :
+# all_minivans = Minivan.all
+# all_departures = all_minivans.map do |minivan|
+#   minivan.departure
+# end
+# departures_with_coordinates = all_departures..select{|departure| departure.latitude && departure.longitude }
+
+# TODO replace by proper SQL query
