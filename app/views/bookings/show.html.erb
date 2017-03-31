@@ -10,6 +10,14 @@
 <% if @user == current_user %>
   <%= link_to "Delete", user_minivan_booking_path(@user,@minivan,@booking), method: :delete, data: { confirm: "Are you sure that you want to delete the booking?"}, class: "btn btn-danger"%>
   <%= link_to "Modify booking", edit_user_minivan_booking_path(@user,@minivan,@booking) %>
+<% elsif @driver == current_user %>
+  <h3>Change booking status</h3>
+  <p>Current status of the booking: <%= @booking.status %></p>
+  <p>Change status:</p>
+  <%= simple_form_for [@driver, @minivan, @booking] do |m|%>
+    <%= m.input :status, collection: ["confirmed", "rejected"], as: :radio_buttons %>
+    <%= m.submit "submit", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
 
 

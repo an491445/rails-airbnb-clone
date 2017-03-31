@@ -34,9 +34,15 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params)
     @minivan = @booking.minivan
     @user = @booking.user
+
+    if current_user == @user
+      @booking.update(booking_params)
+    elsif current_user == @minivan.user
+      @booking.update(booking_params_owner)
+    end
+
     redirect_to user_minivan_booking_path(@user,@minivan,@booking)
   end
 
@@ -53,5 +59,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:message)
+  end
+
+  def booking_params_owner
+    params.require(:booking).permit(:status)
   end
 end
