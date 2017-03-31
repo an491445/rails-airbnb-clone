@@ -34,7 +34,7 @@ class MinivansController < ApplicationController
 
     @minivan.user = @user
     if @minivan.save
-      redirect_to user_path(@user)
+      redirect_to profile_path
     else
       render :new
     end
@@ -58,7 +58,7 @@ class MinivansController < ApplicationController
   def destroy
     if @minivan.user == current_user
       @minivan.destroy
-      redirect_to user_path(@user)
+      redirect_to profile_path
     end
   end
 
