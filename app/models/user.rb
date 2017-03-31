@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :minivans, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_one :profile
 
   def self.find_for_facebook_oauth(auth)
