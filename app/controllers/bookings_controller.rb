@@ -11,9 +11,9 @@ class BookingsController < ApplicationController
     @booking.status = "Not confirmed"
 
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to user_minivan_booking_path(@user, @minivan, @booking)
     else
-      redirect_to minivan_path(@minivan)
+      redirect_to user_minivan_path(@minivan)
     end
   end
 
@@ -22,20 +22,22 @@ class BookingsController < ApplicationController
     @minivans = [@minivan]
     @user = @booking.user
     @driver = @minivan.user
-    @traveller = @booking.user
 
-    if current_user != @traveller && current_user != @driver
+    if current_user != @user && current_user != @driver
       redirect_to root_path
     end
   end
 
   def edit
     @minivan = @booking.minivan
+    @user = @booking.user
   end
 
   def update
     @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    @minivan = @booking.minivan
+    @user = @booking.user
+    redirect_to user_minivan_booking_path(@user,@minivan,@booking)
   end
 
   def destroy
