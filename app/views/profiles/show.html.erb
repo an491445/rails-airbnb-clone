@@ -31,21 +31,23 @@
           <% else %>
         <ul>
           <% @bookings.each do |booking| %>
-            <li> Booking id:
-              <%= booking.id %>
-              <%= link_to "See booking details", user_minivan_booking_path(booking.minivan.user,booking.minivan,booking) %>
+            <li> <% "My booking from #{booking.minivan.departure} to #{booking.minivan.arrival}" %>
+              <%= link_to "My booking details", user_minivan_booking_path(booking.minivan.user,booking.minivan,booking) %>
             </li>
           <% end %>
         </ul>
       <% end %>
-      <h2>People who have signed up for your trips</h2>
+      <h2>People who sign for my trips</h2>
         <% if @bookings_other.empty? %>
         <p>No body has signed up for your trips yet.</p>
         <% else %>
         <ul>
           <% @bookings_other.each do |booking| %>
-            <li> Booking id:
-              <%= booking.id %>
+            <li>
+              <%= booking.user.profile.first_name %>
+              has booked my minivan
+              <%= booking.minivan.id %>
+              <p> <strong> <%= booking.status %></strong>
               <%= link_to "See booking details", user_minivan_booking_path(booking.minivan.user,booking.minivan,booking) %>
             </li>
           <% end %>

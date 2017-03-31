@@ -1,23 +1,40 @@
-<h1>Booking</h1>
-<p>Id: <%= @booking.id %></p>
-<%= render 'shared/card' %>
-<p>Route: <%= @minivan.departure.location if @minivan.departure %> - <%= @minivan.arrival.location if @minivan.arrival %></p>
-<p>Time: <%= @minivan.departure_date %> - <%= @minivan.arrival_date %></p>
-<p>Price: <%= @minivan.price %>€</p>
-<p>Status: <%= @booking.status %></p>
-<p>Owner of the van: <%= link_to "#{@driver.profile.first_name} #{@driver.profile.last_name}", user_path(@driver) if @driver %></p>
-<p>Message: <%= @booking.message %></p>
-<% if @user == current_user %>
-  <%= link_to "Delete", user_minivan_booking_path(@user,@minivan,@booking), method: :delete, data: { confirm: "Are you sure that you want to delete the booking?"}, class: "btn btn-danger"%>
-  <%= link_to "Modify booking", edit_user_minivan_booking_path(@user,@minivan,@booking) %>
-<% elsif @driver == current_user %>
-  <h3>Change booking status</h3>
-  <p>Current status of the booking: <%= @booking.status %></p>
-  <p>Change status:</p>
-  <%= simple_form_for [@driver, @minivan, @booking] do |m|%>
-    <%= m.input :status, collection: ["confirmed", "rejected"], as: :radio_buttons %>
-    <%= m.submit "submit", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
 
+<h1 class="text-center"> Here is your booking: </h1>
+
+<div class="container">
+  <div class="row">
+    <div class= "col-xs-12 col-md-6" style="margin-bottom: 40px">
+      <% @booking.id %>
+      <%= render 'shared/card' %>
+    <div class="booking">
+      <p><strong>Route:</strong> <%= @minivan.departure.location if @minivan.departure %> - <%= @minivan.arrival.location if @minivan.arrival %></p>
+      <p><strong>Time:</strong> <%= @minivan.departure_date %> - <%= @minivan.arrival_date %></p>
+      <p><strong>Price: </strong><%= @minivan.price %>€</p>
+      <p><strong>Status:</strong> <%= @booking.status %></p>
+      <p><strong>Owner of the van: </strong><%= link_to "#{@driver.profile.first_name} #{@driver.profile.last_name}", user_path(@driver) if @driver %></p>
+      <p><strong>Message: </strong><%= @booking.message %></p>
+      <% if @user == current_user %>
+      <%= link_to "Delete", user_minivan_booking_path(@user,@minivan,@booking), method: :delete, data: { confirm: "Are you sure that you want to delete the booking?"}, class: "btn btn-warning"%>
+      <%= link_to "Modify", edit_user_minivan_booking_path(@user,@minivan,@booking), class: "btn btn-warning" %>
+      <% elsif @driver == current_user %>
+      </div>
+    </div>
+
+  <div class= "col-xs-12 col-md-6" style="margin-bottom: 40px">
+        <h3>Change booking status</h3>
+        <p>Current status of the booking: <%= @booking.status %></p>
+        <p>Change status:</p>
+        <%= simple_form_for [@driver, @minivan, @booking] do |m|%>
+        <%= m.input :status, collection: ["confirmed", "rejected"], as: :radio_buttons %>
+        <%= m.submit "submit", class: "btn btn-warning" %>
+      <% end %>
+  <% end %>
+  </div>
+  </div>
+  <div class="row">
+   <div class= "col-xs-12 text-center" style="margin-bottom: 40px" >
+<%= link_to "Go back to my profile", profile_path(@user,@minivan,@booking), class: "btn btn-warning" %>
+   </div>
+  </div>
+</div>
 
