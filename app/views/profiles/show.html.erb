@@ -30,7 +30,7 @@
           <% @bookings.each do |booking| %>
             <li> Booking id:
               <%= booking.id %>
-              <%= link_to "See booking details", booking_path(booking) %>
+              <%= link_to "See booking details", user_minivan_booking_path(booking.minivan.user,booking.minivan,booking) %>
             </li>
           <% end %>
         </ul>
@@ -43,7 +43,7 @@
           <% @bookings_other.each do |booking| %>
             <li> Booking id:
               <%= booking.id %>
-              <%= link_to "See booking details", booking_path(booking) %>
+              <%= link_to "See booking details", user_minivan_booking_path(booking.minivan.user,booking.minivan,booking) %>
             </li>
           <% end %>
         </ul>
