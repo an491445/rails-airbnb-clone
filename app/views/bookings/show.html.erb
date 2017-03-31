@@ -19,5 +19,18 @@
     <%= m.submit "submit", class: "btn btn-primary" %>
   <% end %>
 <% end %>
+<h2>
+  <%= pluralize @booking.reviews.size, "review" %>
+</h2>
 
+<div id="reviews">
+  <% if @booking.reviews.blank? %>
+    Be the first to leave a review for this trip
+  <% else %>
+    <% @booking.reviews.each do |review| %>
+      <%= render 'reviews/show', review: review %>
+    <% end %>
+  <% end %>
+</div>
 
+<%= render 'reviews/form', booking: @booking, review: @review %>

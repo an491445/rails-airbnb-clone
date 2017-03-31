@@ -1,0 +1,4 @@
+<%= simple_form_for([ booking.minivan.user, booking.minivan, booking, review ], remote: true) do |form| %>
+  <%= form.input :comment, as: :text %>
+  <%= form.button :submit %>
+<% end %>

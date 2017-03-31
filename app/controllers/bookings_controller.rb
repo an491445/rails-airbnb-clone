@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
     @minivans = [@minivan]
     @user = @booking.user
     @driver = @minivan.user
+    @review = Review.new
 
     if current_user != @user && current_user != @driver
       redirect_to root_path
