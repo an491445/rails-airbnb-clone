@@ -41,6 +41,9 @@ class BookingsController < ApplicationController
       @booking.update(booking_params)
     elsif current_user == @minivan.user
       @booking.update(booking_params_owner)
+      if @booking.status == "confirmed"
+        @minivan.available_seats -= 1
+      end
     end
 
     redirect_to user_minivan_booking_path(@user,@minivan,@booking)

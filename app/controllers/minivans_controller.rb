@@ -30,6 +30,7 @@ class MinivansController < ApplicationController
 
   def create
     @minivan = Minivan.new(minivans_params)
+    @minivan.capacity = @minivan.available_seats
     @departure = Departure.create(departure_params)
     @arrival = Arrival.create(arrival_params)
 
