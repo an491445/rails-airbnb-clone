@@ -4,11 +4,11 @@ class MinivansController < ApplicationController
 
   def index
     @minivans = Minivan.all
-    @minivans = Minivan.where.not(latitude: nil, longitude: nil)
+    @departures = Minivan.return_departures_with_coordinates
 
-    @hash = Gmaps4rails.build_markers(@minivans) do |minivan, marker|
-      marker.lat minivan.latitude
-      marker.lng minivan.longitude
+    @hash = Gmaps4rails.build_markers(@departures) do |departure, marker|
+      marker.lat departure.latitude
+      marker.lng departure.longitude
       # marker.infowindow render_to_string(partial: "/minivans/map_box", locals: { flat: flat })
     end
   end
@@ -16,6 +16,10 @@ class MinivansController < ApplicationController
   def show
     @same_user = current_user == @minivan.user
     @booking = Booking.new
+    @hash = Gmaps4rails.build_markers(@minivan.departure) do |departure, marker|
+      marker.lat departure.latitude
+      marker.lng departure.longitude
+    end
   end
 
   def new
