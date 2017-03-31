@@ -43,6 +43,7 @@ class BookingsController < ApplicationController
       @booking.update(booking_params_owner)
       if @booking.status == "confirmed"
         @minivan.available_seats -= 1
+        @minivan.save
       end
     end
 
