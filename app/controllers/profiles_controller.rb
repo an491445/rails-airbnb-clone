@@ -5,7 +5,11 @@ class ProfilesController < ApplicationController
     @user = current_user
     @minivans = @user.minivans
     @bookings = @user.bookings
-    @bookings_other = Booking.where(user_id: current_user.id)
+    @bookings_other = [ ]
+    @user.minivans.each do |minivan|
+      @bookings_other << minivan.bookings
+    end
+    @bookings_other = @bookings_other.flatten
   end
 
   def edit
